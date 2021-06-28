@@ -11,5 +11,5 @@ keycloak:
     contextPath: /auth
     adminUser:
       username: admin
-      password: pass
+      password: passw0rd
     realmImportFile: keycloak-realm.json
