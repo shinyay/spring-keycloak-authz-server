@@ -96,7 +96,7 @@
 	},
 	"connectionsJpa": {
 		"default": {
-			"url": "${keycloak.connectionsJpa.url:jdbc:h2:./target/keycloak}",
+			"url": "${keycloak.connectionsJpa.url:jdbc:h2:mem:keycloakdb}",
 			"driver": "${keycloak.connectionsJpa.driver:org.h2.Driver}",
 			"driverDialect": "${keycloak.connectionsJpa.driverDialect:}",
 			"user": "${keycloak.connectionsJpa.user:sa}",
