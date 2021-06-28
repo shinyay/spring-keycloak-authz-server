@@ -5,6 +5,16 @@ Keycloak server is running on Spring Boot
 ## Description
 
 ## Demo
+### Build
+```shell
+$ mvn clean package
+```
+
+### Run
+```shell
+$ java -jar target/oauth-authorization-server-0.0.1-SNAPSHOT.jar
+```
+
 
 ## Features
 
