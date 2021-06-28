@@ -15,6 +15,12 @@ $ mvn clean package
 $ java -jar target/oauth-authorization-server-0.0.1-SNAPSHOT.jar
 ```
 
+### Access
+- http://localhost:8083/auth
+
+![top](https://user-images.githubusercontent.com/3072734/123707769-2d87a580-d8a5-11eb-92ca-8620bf13764e.png)
+
+
 
 ## Features
 
