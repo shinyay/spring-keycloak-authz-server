@@ -54,6 +54,10 @@ keycloak:
     realmImportFile: keycloak-realm.json
 ```
 
+You can import the exported configuration at `realmImportFile`
+
+![export](https://user-images.githubusercontent.com/3072734/123708343-36c54200-d8a6-11eb-82d0-1e9cb90e5c09.png)
+
 
 ## Installation
 
