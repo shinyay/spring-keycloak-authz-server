@@ -14,6 +14,24 @@ Keycloak server is running on Spring Boot
 ## Requirement
 
 ## Usage
+### Keycloak configuration
+You can configure the followings:
+- Context Path: `keycloak.server.contextPath`
+- adminUserName: `keycloak.server.adminUser.username`
+- adminUserPassword: `keycloak.server.adminUser.password`
+- Keycloak configurations: `keycloak.server.realmImportFile`
+
+application.yml
+```yaml
+keycloak:
+  server:
+    contextPath: /auth
+    adminUser:
+      username: admin
+      password: passw0rd
+    realmImportFile: keycloak-realm.json
+```
+
 
 ## Installation
 
