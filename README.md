@@ -22,6 +22,11 @@ $ java -jar target/oauth-authorization-server-0.0.1-SNAPSHOT.jar
 
 ![login](https://user-images.githubusercontent.com/3072734/123707820-45f7c000-d8a5-11eb-8bdb-05a8796629fe.png)
 
+#### Configurations
+![clients](https://user-images.githubusercontent.com/3072734/123708111-d46c4180-d8a5-11eb-880f-ead20c14ce09.png)
+
+![authentication](https://user-images.githubusercontent.com/3072734/123708228-01205900-d8a6-11eb-9b54-99176b66913b.png)
+
 
 ## Features
 
