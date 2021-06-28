@@ -2,18 +2,31 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.8</version>
+        <relativePath />
+    </parent>
 
     <groupId>com.google.shinyay</groupId>
     <artifactId>oauth-authorization-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.6.RELEASE</version>
-        <relativePath />
-    </parent>
+    <properties>
+        <!-- non-dependencies -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
+
+        <keycloak.version>11.0.2</keycloak.version>
+
+        <!-- these should be updated together with Keycloak -->
+        <!-- check keycloak-dependencies-server-all effective pom -->
+        <infinispan.version>10.1.8.Final</infinispan.version>
+        <resteasy.version>3.12.1.Final</resteasy.version>
+        <kotlin.version>1.5.20</kotlin.version>
+    </properties>
 
     <dependencies>
 
@@ -98,29 +111,11 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
+
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
@@ -165,21 +160,16 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <!-- non-dependencies -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
-
-        <keycloak.version>11.0.2</keycloak.version>
-
-        <!-- these should be updated together with Keycloak -->
-        <!-- check keycloak-dependencies-server-all effective pom -->
-        <infinispan.version>10.1.8.Final</infinispan.version>
-        <resteasy.version>3.12.1.Final</resteasy.version>
-        <kotlin.version>1.5.20</kotlin.version>
-    </properties>
 
 </project>
