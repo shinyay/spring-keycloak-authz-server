@@ -38,7 +38,7 @@ class EmbeddedKeycloakApplication : KeycloakApplication() {
         try {
             session.transactionManager.begin()
             val manager = RealmManager(session)
-            val lessonRealmImportFile: Resource = ClassPathResource(keycloakServerProperties?.getRealmImportFile())
+            val lessonRealmImportFile: Resource = ClassPathResource(keycloakServerProperties?.getRealmImportFile()!!)
             manager.importRealm(
                 JsonSerialization.readValue(lessonRealmImportFile.inputStream, RealmRepresentation::class.java)
             )
