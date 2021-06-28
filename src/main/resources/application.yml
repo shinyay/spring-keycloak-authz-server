@@ -5,7 +5,9 @@ spring:
   datasource:
     username: sa
     url: jdbc:h2:mem:customdb
-
+  h2:
+    console:
+      enabled: true
 keycloak:
   server:
     contextPath: /auth
