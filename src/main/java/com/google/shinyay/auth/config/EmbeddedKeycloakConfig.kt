@@ -13,10 +13,10 @@ import javax.naming.spi.NamingManager
 import javax.sql.DataSource
 
 @Configuration
-open class EmbeddedKeycloakConfig {
+class EmbeddedKeycloakConfig {
     @Bean
     @Throws(Exception::class)
-    open fun keycloakJaxRsApplication(
+    fun keycloakJaxRsApplication(
         keycloakServerProperties: KeycloakServerProperties?, dataSource: DataSource?
     ): ServletRegistrationBean<HttpServlet30Dispatcher?>? {
         mockJndiEnvironment(dataSource)
@@ -37,18 +37,18 @@ open class EmbeddedKeycloakConfig {
     }
 
     @Bean
-    open fun keycloakSessionManagement(keycloakServerProperties: KeycloakServerProperties?): FilterRegistrationBean<EmbeddedKeycloakRequestFilter?>? {
+    fun keycloakSessionManagement(keycloakServerProperties: KeycloakServerProperties?): FilterRegistrationBean<EmbeddedKeycloakRequestFilter?>? {
         val filter = FilterRegistrationBean<EmbeddedKeycloakRequestFilter?>()
         filter.setName("Keycloak Session Management")
-        filter.setFilter(EmbeddedKeycloakRequestFilter())
+        filter.filter = EmbeddedKeycloakRequestFilter()
         filter.addUrlPatterns(keycloakServerProperties?.getContextPath() + "/*")
         return filter
     }
 
     @Throws(NamingException::class)
     private fun mockJndiEnvironment(dataSource: DataSource?) {
-        NamingManager.setInitialContextFactoryBuilder { env: Hashtable<*, *>? ->
-            label@ InitialContextFactory { environment: Hashtable<*, *>? ->
+        NamingManager.setInitialContextFactoryBuilder {
+            InitialContextFactory {
                 object : InitialContext() {
                     override fun lookup(name: Name?): Any? {
                         return lookup(name.toString())
@@ -61,7 +61,7 @@ open class EmbeddedKeycloakConfig {
                         return null
                     }
 
-                    override fun getNameParser(name: String?): NameParser? {
+                    override fun getNameParser(name: String?): NameParser {
                         return NameParser { n: String? -> CompositeName(n) }
                     }
 
