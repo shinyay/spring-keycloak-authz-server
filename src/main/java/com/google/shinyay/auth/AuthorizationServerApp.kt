@@ -1,6 +1,7 @@
 package com.google.shinyay.auth
 
 import com.google.shinyay.auth.config.KeycloakServerProperties
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -35,3 +36,6 @@ open class AuthorizationServerApp {
 fun main(args: Array<String>) {
     runApplication<AuthorizationServerApp>(*args)
 }
+
+val Any.logger: Logger
+    get() = LoggerFactory.getLogger(this::class.java)
