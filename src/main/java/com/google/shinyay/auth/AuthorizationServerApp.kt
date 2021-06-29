@@ -3,7 +3,6 @@ package com.google.shinyay.auth
 import com.google.shinyay.auth.config.KeycloakServerProperties
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration
 import org.springframework.boot.autoconfigure.web.ServerProperties
@@ -17,16 +16,16 @@ import org.springframework.context.annotation.Bean
 @EnableConfigurationProperties(
     KeycloakServerProperties::class
 )
-open class AuthorizationServerApp {
+class AuthorizationServerApp {
     private val LOG = LoggerFactory.getLogger(AuthorizationServerApp::class.java)
 
     @Bean
-    open fun onApplicationReadyEventListener(
+    fun onApplicationReadyEventListener(
         serverProperties: ServerProperties?,
         keycloakServerProperties: KeycloakServerProperties?
     ): ApplicationListener<ApplicationReadyEvent?>? {
-        return ApplicationListener { evt: ApplicationReadyEvent? ->
-            val port = serverProperties?.getPort()
+        return ApplicationListener {
+            val port = serverProperties?.port
             val keycloakContextPath = keycloakServerProperties?.getContextPath()
             LOG.info("Embedded Keycloak started: http://localhost:{}{} to use keycloak", port, keycloakContextPath)
         }
