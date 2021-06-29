@@ -1,5 +1,6 @@
 package com.google.shinyay.auth.config
 
+import com.google.shinyay.auth.logger
 import org.keycloak.Config
 import org.keycloak.representations.idm.RealmRepresentation
 import org.keycloak.services.managers.ApplianceBootstrap
@@ -7,7 +8,6 @@ import org.keycloak.services.managers.RealmManager
 import org.keycloak.services.resources.KeycloakApplication
 import org.keycloak.services.util.JsonConfigProviderFactory
 import org.keycloak.util.JsonSerialization
-import org.slf4j.LoggerFactory
 import org.springframework.core.io.ClassPathResource
 import org.springframework.core.io.Resource
 
@@ -27,7 +27,7 @@ class EmbeddedKeycloakApplication : KeycloakApplication() {
             applianceBootstrap.createMasterRealmUser(admin?.getUsername(), admin?.getPassword())
             session.transactionManager.commit()
         } catch (ex: Exception) {
-            LOG.warn("Couldn't create keycloak master admin user: {}", ex.message)
+            logger.warn("Couldn't create keycloak master admin user: {}", ex.message)
             session.transactionManager.rollback()
         }
         session.close()
@@ -44,14 +44,13 @@ class EmbeddedKeycloakApplication : KeycloakApplication() {
             )
             session.transactionManager.commit()
         } catch (ex: Exception) {
-            LOG.warn("Failed to import Realm json file: {}", ex.message)
+            logger.warn("Failed to import Realm json file: {}", ex.message)
             session.transactionManager.rollback()
         }
         session.close()
     }
 
     companion object {
-        private val LOG = LoggerFactory.getLogger(EmbeddedKeycloakApplication::class.java)
         var keycloakServerProperties: KeycloakServerProperties? = null
     }
 
