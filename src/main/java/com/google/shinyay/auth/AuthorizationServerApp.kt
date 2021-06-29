@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfigurati
 import org.springframework.boot.autoconfigure.web.ServerProperties
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.boot.context.properties.EnableConfigurationProperties
+import org.springframework.boot.runApplication
 import org.springframework.context.ApplicationListener
 import org.springframework.context.annotation.Bean
 
@@ -16,6 +17,8 @@ import org.springframework.context.annotation.Bean
     KeycloakServerProperties::class
 )
 open class AuthorizationServerApp {
+    private val LOG = LoggerFactory.getLogger(AuthorizationServerApp::class.java)
+
     @Bean
     open fun onApplicationReadyEventListener(
         serverProperties: ServerProperties?,
@@ -27,13 +30,8 @@ open class AuthorizationServerApp {
             LOG.info("Embedded Keycloak started: http://localhost:{}{} to use keycloak", port, keycloakContextPath)
         }
     }
+}
 
-    companion object {
-        private val LOG = LoggerFactory.getLogger(AuthorizationServerApp::class.java)
-        @Throws(Exception::class)
-        @JvmStatic
-        fun main(args: Array<String>) {
-            SpringApplication.run(AuthorizationServerApp::class.java, *args)
-        }
-    }
+fun main(args: Array<String>) {
+    runApplication<AuthorizationServerApp>(*args)
 }
