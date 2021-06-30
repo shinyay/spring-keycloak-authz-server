@@ -27,6 +27,10 @@ $ java -jar target/oauth-authorization-server-0.0.1-SNAPSHOT.jar
 
 ![authentication](https://user-images.githubusercontent.com/3072734/123708228-01205900-d8a6-11eb-9b54-99176b66913b.png)
 
+### Run by Docker
+```shell
+$ docker run --rm -it -p 8083:8083 shinyay/keycloak:0.0.1
+```
 
 ## Features
 
