@@ -15,7 +15,7 @@ $ mvn clean package
 
 ### Run
 ```shell
-$ java -jar target/oauth-authorization-server-0.0.1-SNAPSHOT.jar
+$ java -jar target/oauth-authorization-server-0.0.2-SNAPSHOT.jar
 ```
 
 ### Access
