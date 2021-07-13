@@ -8,6 +8,15 @@ Published in Docker Hub
 ## Description
 
 ## Demo
+### Prepare Environment
+- Authorization Server
+  - [shinyay/spring-keycloak-authz-server](https://github.com/shinyay/spring-keycloak-authz-server)
+- Resource Server
+  - [shinyay/spring-security-oauth2-resource-server-gs](https://github.com/shinyay/spring-security-oauth2-resource-server-gs)
+- OAuth2.0 Client
+  - [shinyay/spring-security-oauth2-client-for-keycloak](https://github.com/shinyay/spring-security-oauth2-client-for-keycloak)
+
+
 ### Build
 ```shell
 $ mvn clean package
