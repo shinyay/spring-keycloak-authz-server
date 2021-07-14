@@ -5,6 +5,8 @@ Keycloak server is running on Spring Boot
 Published in Docker Hub
 - [shinyay/keycloak](https://hub.docker.com/repository/docker/shinyay/keycloak)
 
+![keycloak-auth-flow](https://user-images.githubusercontent.com/3072734/125256072-09ad7080-e337-11eb-93d1-d192484b4120.png)
+
 ## Description
 
 ## Demo
